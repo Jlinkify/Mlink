@@ -1,91 +1,122 @@
-body, html {
-	 font-family: 'Roboto', sans-serif;
-	 height: 100%;
-	 margin: 0px;
-	 width: 100%;
+* {
+  margin: 0;
+  padding: 0;
 }
- h1 {
-	 margin: 0px;
+
+html,
+body {
+  height: 100%;
+  /* for touch screen */
+  touch-action: none; 
 }
- #wrapper {
-	 align-items: center;
-	 display: flex;
-	 height: 100%;
-	 justify-content: center;
-	 width: 100%;
+
+body {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #111;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
- #phone {
-	 background: radial-gradient(#f0f0f0, #dcdcdc);
-	 border-radius: 35px;
-	 box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 30px, rgba(0, 0, 0, 0.23) 0px 6px 10px;
-	 padding: 5px;
+
+#drag-container, #spin-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(-10deg);
+          transform: rotateX(-10deg);
 }
- #phone #case {
-	 background-color: #f0f0f0;
-	 border: 2px solid rgba(230, 230, 230, 0.8);
-	 border-radius: 30px;
-	 padding: 60px 10px;
+
+#drag-container img, #drag-container video {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 200px;
+  font-size: 50px;
+  text-align: center;
+  -webkit-box-shadow: 0 0 8px #fff;
+          box-shadow: 0 0 8px #fff;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
 }
- #screen {
-	 background-color: #f0f0f0;
-	 height: 512px;
-	 overflow: hidden;
-	 position: relative;
-	 width: 288px;
+
+#drag-container img:hover, #drag-container video:hover {
+  -webkit-box-shadow: 0 0 15px #fffd;
+          box-shadow: 0 0 15px #fffd;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
 }
- #screen #status-bar {
-	 background-color: rgba(0, 0, 0, 0.4);
-	 height: 16px;
-	 left: 0px;
-	 position: absolute;
-	 top: 0px;
-	 user-select: none;
-	 width: 100%;
-	 z-index: 10;
+
+#drag-container p {
+  font-family: Serif;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%) rotateX(90deg);
+          transform: translate(-50%,-50%) rotateX(90deg);
+  color: #fff;
 }
- #screen #status-bar #items {
-	 position: absolute;
-	 right: 0px;
-	 top: 0px;
+
+#ground {
+  width: 900px;
+  height: 900px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%) rotateX(90deg);
+          transform: translate(-50%,-50%) rotateX(90deg);
+  background: -webkit-radial-gradient(center center, farthest-side , #9993, transparent);
 }
- #screen #status-bar #items .item {
-	 display: inline-block;
-	 height: 16px;
-	 line-height: 16px;
-	 vertical-align: top;
+
+#music-container {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
- #screen #status-bar #items .item i {
-	 color: white;
-	 font-size: 0.7em;
-	 height: 16px;
-	 line-height: 16px;
-	 margin-right: 2px;
-	 vertical-align: top;
+
+@-webkit-keyframes spin {
+  from{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  } to{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
 }
- #screen #status-bar #items #time h1 {
-	 color: white;
-	 font-size: 0.7em;
-	 font-weight: 400;
-	 height: 16px;
-	 line-height: 16px;
-	 margin-right: 5px;
+
+@keyframes spin {
+  from{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  } to{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
 }
- #app {
-	 cursor: pointer;
-	 height: 100%;
-	 overflow-x: hidden;
-	 overflow-y: auto;
-	 user-select: none;
+@-webkit-keyframes spinRevert {
+  from{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  } to{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
 }
- .scroll-bar::-webkit-scrollbar {
-	 width: 2px;
-}
- .scroll-bar::-webkit-scrollbar-thumb {
-	 background-color: #c8c8c8;
-}
- .hide {
-	 display: none;
-}
- .disable {
-	 pointer-events: none;
+@keyframes spinRevert {
+  from{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  } to{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
 }
